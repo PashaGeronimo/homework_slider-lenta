@@ -10,14 +10,18 @@
             background-color: #999;
         }
         
+        :root {
+            --sizetop:300px;/*отступ сверху */
+        }
+        
         #container {
             width: 900px;
+            top: var(--sizetop);
+            position: relative;
             margin: auto;
+            display: flex;
+            height: 150px; /*меняем кроп */
             overflow: hidden;
-            top: 300px;
-            position: relative; 
-
-
         }
         
         #lenta {
@@ -25,29 +29,24 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            left: 150px;
-            /*движение начальный параметр ленты*/
+            left: 0px;  /*движение начальный параметр ленты*/
 
-
-        }
-        
-        #containerbtn {
-            width: 900px;
-            height: 300px;
-            margin: auto;
-            overflow: hidden;
-            top: 180px;
-            position: relative;
 
         }
         
         .buttons {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            /*align-items: flex-end;*/
+            /*background-color: #AAA;*/
             position: relative;
+            top: calc( 270px + var(--sizetop) - 390px); 
+            margin: auto;
             z-index: 3;
+            width: 900px;
+            height: 200px;
         }
+
         
         #right {
             width: 0;
@@ -78,16 +77,14 @@
         <div id="lenta">
         </div>
 
-
-
     </div>
-
-    <div id="containerbtn">
-        <div class="buttons">
-            <div id="left"></div>
-            <div id="right"></div>
-        </div>
+    <div class="buttons">
+        <div id="left"></div>
+        <div id="right"></div>
     </div>
+    <!--<div id="containerbtn">-->
+
+    <!--</div>-->
 
 
     <script>
