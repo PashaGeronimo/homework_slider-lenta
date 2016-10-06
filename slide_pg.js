@@ -35,8 +35,6 @@
             // длина ленты
             var widthAll = $('#img5').innerWidth() * options.photos;
 
-
-
             // нажатие влево
             $('#left').click(function() {
                 MarginL += options.lentaStep;
@@ -57,23 +55,19 @@
 
             console.log(options.widthPic);
 
-       
+           // Регулировка размера кнопок
             $('.buttons').css({
                 'top':  +$('#container').css('top').slice(0, -2) + 39 - ((options.widthPic-150)/1.85) - 120 + 'px',
             });
 
             var sizbtn = 40 + ((options.widthPic-150)/3.6);
-           // Регулировка размера кнопок
             $('#right').css({
             'border-top': ''+sizbtn+'px solid transparent',
-            'border-left': '90px solid #363',
             'border-bottom': ''+sizbtn+'px solid transparent',
-            
             });
 
             $('#left').css({
             'border-top': ''+sizbtn+'px solid transparent',
-            'border-right': '90px solid #363',
             'border-bottom': ''+sizbtn+'px solid transparent',
             });
 
