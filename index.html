@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Карусель</title>
+    <meta charset="UTF-8">
+
+    <style>
+        body {
+            background-color: #999;
+        }
+        
+        #container {
+            width: 900px;
+            margin: auto;
+            overflow: hidden;
+            top: 300px;
+            position: relative;
+        }
+        
+        #lenta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 150px;
+            /*движение начальный параметр ленты*/
+        }
+        
+        #containerbtn {
+            width: 900px;
+            height: 300px;
+            margin: auto;
+            overflow: hidden;
+            top: 180px;
+            position: relative;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+            z-index: 3;
+        }
+        
+        #right {
+            width: 0;
+            height: 0;
+            border-top: 60px solid transparent;
+            border-left: 90px solid #363;
+            border-bottom: 60px solid transparent;
+        }
+        
+        #left {
+            width: 0;
+            height: 0;
+            border-top: 60px solid transparent;
+            border-right: 90px solid #363;
+            border-bottom: 60px solid transparent;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script src="jquery-3.1.0.min.js"></script>
+    <script src="slide_pg.js"></script>
+
+
+    <div id="container">
+
+        <div id="lenta">
+        </div>
+
+
+
+    </div>
+
+    <div id="containerbtn">
+        <div class="buttons">
+            <div id="left"></div>
+            <div id="right"></div>
+        </div>
+    </div>
+
+
+    <script>
+        $('body').slide_pg({
+
+            photos: 12, //количество фото
+            namefile: 'work-', //шаблом имени файлов
+            lentaStep: 250,
+            widthPic: 250, //220-270
+        });
+    </script>
+
+</body>
+
+</html>
