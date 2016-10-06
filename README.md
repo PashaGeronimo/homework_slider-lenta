@@ -1,6 +1,7 @@
-﻿Втянул готовый слайдер в плагин.
+﻿Слайдер с лентой превью и центральным кадром.
 
 
 
-[Запустить выполнение:](https://rawgit.com/PashaGeronimo/homework_carousel_plugin_dots/master/carousel.html)
+
+[Запустить выполнение:](https://rawgit.com/PashaGeronimo/homework_slider-lenta/master/index.htmll)
 
