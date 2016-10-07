@@ -5,10 +5,9 @@
         var options = $.extend({
             photos: 10,
             namefile: 'name-',
-            lentaStep: 100,
             widthPic: 270,
             marginImg: 2,
-            speed: 400,
+            speed: 2,
             centerFrame: 4,
 
         }, opt);
@@ -34,17 +33,24 @@
             });
 
             // высота обрезки
+            var heightcrop = options.widthPic / 1.85;
             $('#container').css({
                 'height': options.widthPic / 1.85 + 'px',
             });
 
+            $('#bigphoto').css('height', 'calc( 100vh - ' + (heightcrop + 40) + 'px)');
             // длина ленты вычитая видимую часть + margin* кол фото*2
             var widthLenta = options.widthPic * (options.photos) - $('#container').css('width').slice(0, -2) + options.marginImg * (options.photos * 2);
 
             var stop = 1;
             // движение ленты вправо
             function my() {
-                if (MoveLeft <= -widthLenta) stop = 0;
+                if (MoveLeft <= -widthLenta) {
+                    stop = 0;
+                    $('#right').css({
+                        'opacity': 0.5,
+                    });
+                }
                 if (stop == 1) {
                     MoveLeft = MoveLeft - options.speed;
                     $('#lenta').css({
@@ -56,15 +62,22 @@
             $('#right').mousedown(function () {
                 stop = 1;
                 my();
+                $('#left').css({
+                    'opacity': 1,
+                });
             });
-            $('#right').mouseup(function () {
-                stop = 0;
-            });
+            $('#right').mouseup(function () { stop = 0; });
+            $('#right').mouseleave(function () { stop = 0; });
 
 
             // движение ленты влево
             function myL() {
-                if (MoveLeft >= 0) stop = 0;
+                if (MoveLeft >= 0) {
+                    stop = 0;
+                    $('#left').css({
+                        'opacity': 0.5,
+                    });
+                }
                 if (stop == 1) {
                     MoveLeft = MoveLeft + options.speed;
                     $('#lenta').css({
@@ -76,10 +89,12 @@
             $('#left').mousedown(function () {
                 stop = 1;
                 myL();
+                $('#right').css({
+                    'opacity': 1,
+                });
             });
-            $('#left').mouseup(function () {
-                stop = 0;
-            });
+            $('#left').mouseup(function () { stop = 0; });
+            $('#left').mouseleave(function () { stop = 0; });
 
 
 
@@ -99,7 +114,49 @@
                 'border-bottom': '' + sizbtn + 'px solid transparent',
             });
 
+            //начальный фильтр картинок
+            $('[id *=img ]').css({
+                '-webkit-filter': 'contrast(0.9) brightness(90%) saturate(0.9)',
+                'filter': 'contrast(0.9) brightness(90%) saturate(0.9)',
+            });
 
+            // наведение мышки на ленту
+            $('[id *=img ]').hover(function () {
+                $(this).css({
+                    '-webkit-filter': 'contrast(1.1) brightness(110%)  saturate(1)',
+                    'filter': 'contrast(1.1) brightness(110%)  saturate(1)',
+                });
+                $(this).mouseleave(function () {
+                    $(this).css({
+                        '-webkit-filter': 'contrast(0.9) brightness(90%) saturate(0.9)',
+                        'filter': 'contrast(0.9) brightness(90%) saturate(0.9)',
+                    });
+                });
+            });
+
+            // загрузка большого фото
+            $('#bigphoto').css({
+                'background-image': 'url(img/work-' + options.centerFrame + '.jpg)',
+            });
+
+            // нажатие на мелкую иконку
+            $('[id *=img ]').click(function () {
+                $('#bigphoto').css({
+                    'opacity': 0,
+                });
+                // устанавливаем картинку большую
+                $('#bigphoto').css({
+                    'background-image': 'url(img/work-' + $(this).attr('id').substr(3) + '.jpg)',
+
+                });
+
+                // плавно отображаем
+                $('#bigphoto').animate({
+                    opacity: 1
+                }, 1500);
+
+
+            });
 
 
 

@@ -1,28 +1,47 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Карусель</title>
+    <title>Slider by Pasha Geronimo</title>
     <meta charset="UTF-8">
 
     <style>
-        body {
-            background-color: #999;
+        :root {
+            --sizetop: 5px;
+            /*отступ сверху */
+            --color: #967B69;
+            /*цвет */
+            --backcolor: ;
+            /*фоновый цвет */
+            --widthbase: 70%;
+            /*основная ширина */
         }
         
-         :root {
-            --sizetop: 400px;
-            /*отступ сверху */
+        body {
+            background-color: #514944;
+            background-repeat: no-repeat;
+            background-size: contain;
+            overflow: hidden;
+        }
+        
+        #bigphoto {
+            width: calc(var(--widthbase) + 190px);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            top: 3px;
+            margin: auto;
+            opacity: 1;
+            border-color: var(--color);
+            background-color: var(--backcolor);
         }
         
         #container {
-            width: 900px;
+            width: var(--widthbase);
             top: var(--sizetop);
             position: relative;
-            margin: auto ;
+            margin: auto;
             display: flex;
             height: 150px;
-            /*меняем кроп */
             overflow: hidden;
         }
         
@@ -31,8 +50,8 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            background-color: black;
-            /*межкадровый цвет*/
+            background-color: var(--backcolor);
+            z-index: 4;
         }
         
         .buttons {
@@ -41,27 +60,40 @@
             position: relative;
             top: calc( 270px + var(--sizetop) - 390px);
             margin: auto;
-            z-index: 3;
-            width: 1090px;
+            z-index: 1;
+            width: calc(var(--widthbase) + 190px);
             /*расстояние между стрелками */
             height: 200px;
+            z-index: 1;
         }
         
         #right {
-            width: 0;
-            height: 0;
             border-top: 60px solid transparent;
-            border-left: 90px solid #363;
+            border-left: 90px solid var(--color);
             border-bottom: 60px solid transparent;
         }
         
         #left {
-            width: 0;
-            height: 0;
             border-top: 60px solid transparent;
-            border-right: 90px solid #363;
+            border-right: 90px solid var(--color);
             border-bottom: 60px solid transparent;
         }
+        
+        #right,
+        #left {
+            height: 40px;
+            width: 65px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            position: relative;
+            width: 0;
+            height: 0;
+            cursor: pointer;
+        }
+        #right:hover,
+        #left:hover {
+    background-color: #CBAF9D;
+}
     </style>
 
 </head>
@@ -70,6 +102,7 @@
     <script src="jquery-3.1.0.min.js"></script>
     <script src="slide_pg.js"></script>
 
+    <div id="bigphoto"></div>
 
     <div id="container">
         <div id="lenta">
@@ -83,13 +116,12 @@
     <script>
         $('body').slide_pg({
 
-            photos: 12, //количество фото
-            namefile: 'work-', //шаблон имени файлов
-            lentaStep: 250,
-            widthPic: 250, //150-350 размер фотографий
+            photos: 19, //количество фото
+            namefile: 'work-', //префикс имени файлов
+            widthPic: 180, //150-350 размер фотографий
             marginImg: 3, // расстояние между фото
             speed: 4, //скорость
-            centerFrame: 3, //кадр по центру
+            centerFrame: 7, //кадр по центру
         });
     </script>
 
