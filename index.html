@@ -10,8 +10,9 @@
             background-color: #999;
         }
         
-        :root {
-            --sizetop:300px;/*отступ сверху */
+         :root {
+            --sizetop: 400px;
+            /*отступ сверху */
         }
         
         #container {
@@ -20,7 +21,8 @@
             position: relative;
             margin: auto;
             display: flex;
-            height: 150px; /*меняем кроп */
+            height: 150px;
+            /*меняем кроп */
             overflow: hidden;
         }
         
@@ -29,24 +31,23 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            left: 0px;  /*движение начальный параметр ленты*/
-
-
+            /*left: -780px;*/
+            /*движение начальный параметр ленты*/
+            background-color: black;
+            /*межкадровый цвет*/
         }
         
         .buttons {
             display: flex;
             justify-content: space-between;
-            /*align-items: flex-end;*/
-            /*background-color: #AAA;*/
             position: relative;
-            top: calc( 270px + var(--sizetop) - 390px); 
+            top: calc( 270px + var(--sizetop) - 390px);
             margin: auto;
             z-index: 3;
-            width: 900px;
+            width: 1090px;
+            /*расстояние между стрелками */
             height: 200px;
         }
-
         
         #right {
             width: 0;
@@ -73,27 +74,24 @@
 
 
     <div id="container">
-
         <div id="lenta">
         </div>
-
     </div>
     <div class="buttons">
         <div id="left"></div>
         <div id="right"></div>
     </div>
-    <!--<div id="containerbtn">-->
-
-    <!--</div>-->
-
 
     <script>
         $('body').slide_pg({
 
             photos: 12, //количество фото
-            namefile: 'work-', //шаблом имени файлов
+            namefile: 'work-', //шаблон имени файлов
             lentaStep: 250,
-            widthPic: 250, //220-270
+            widthPic: 250, //150-350 размер фотографий
+            marginImg: 3, // расстояние между фото
+            speed: 300, //скорость
+            centerFrame: 3, //кадр по центру
         });
     </script>
 
